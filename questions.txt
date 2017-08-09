@@ -1,0 +1,37 @@
+0. What is pneumonoultramicroscopicsilicovolcanoconiosis?
+0. Pneumonoultramicroscopicsilicovolcanoconiosis is a lung disease caused very fine silica dust inhalation, 
+   which causes inflammation in the lungs.
+   
+1. According to its man page, what does getrusage do?
+1. It returns resource usage measures for a process(es), like memory used for a process or to calculate the 
+   the amount of time taken to return a word in this program.
+
+2. Per that same man page, how many members are in a variable of type struct rusage?
+2. 16
+
+3. Why do you think we pass before and after by reference (instead of by value) to 
+   calculate, even though we’re not changing their contents?
+3. Passing them by value would take too much time and too many resources.
+
+4. Explain as precisely as possible, in a paragraph or more, how main goes about reading
+   words from a file. In other words, convince us that you indeed understand how that 
+   function’s for loop works.
+4. Once the textfile and dictionary are loaded, the main function reads the text 
+   one character at a time, with the goal of constructing separate words. The function 
+   knows that a word is completed when at least one alphabetic symbols is read, and thereafter
+   a non-alphanumeric character (like a hyphen or a space) is encountered. Then we check the 
+   word for misspellings, reset the word index to zero, and continue the symbol reading loop. 
+   If a digit is encountered or a string is too long, we traverse this word in the text, but it
+   won't be checked for misspellings.
+
+5. Why do you think we used fgetc to read each word’s characters one at a time rather
+   than use fscanf with a format string like "%s" to read whole words at a time?
+   Put another way, what problems might arise by relying on fscanf alone?
+5. With fscanf, you must allocate a memory for a string before reading it from file, 
+   and there are no limits of a length of a word. Also, skipping alphanumeric words, 
+   like we do here would not be supported. Overall, this approach would give much less 
+   flexibility.
+
+6. Why do you think we declared the parameters for check and load as const?
+6. Those parameters are never intented to be modified in the functions, so we declared 
+   the parameters as const as a safeguard against changes.  
